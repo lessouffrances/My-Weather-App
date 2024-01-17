@@ -1,0 +1,32 @@
+Weather App Design Documentation 
+(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)
+(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)
+
+Overview
+The Weather App is a SwiftUI-based iOS application that provides users with weather forecasts based on the location they input. It utilizes OpenWeatherMap API to fetch weather data and presents it in a user-friendly manner. The app supports both Celsius and Fahrenheit temperature units and offers a clean and intuitive user interface.
+
+Architecture
+Model-View-ViewModel (MVVM)
+The Weather App follows the MVVM architecture:
+
+Model: The data model consists of Forecast, ForecastViewModel, and APIService for handling forecast data, view model, and API requests, respectively.
+
+View: SwiftUI is used to create the user interface components, including the main content view (ContentView) and various UI elements such as pickers, text fields, lists, and alerts.
+
+ViewModel: The view model (ForecastListViewModel) manages the presentation logic, fetching and formatting forecast data, and handling user interactions.
+
+External Libraries
+SDWebImageSwiftUI: Used for asynchronous loading and caching of remote images, particularly weather icons.
+
+Components
+   - Forecast Structure: Represents the structure of the weather forecast data received from the OpenWeatherMap API.
+
+   - APIService Class: Handles API requests using URLSession to fetch weather data from the OpenWeatherMap API.Utilizes generics to decode JSON data into Swift models.
+   - ForecastListViewModel Class: Manages the presentation logic and data flow between the model and the view. Handles user inputs, fetches weather forecasts, and updates the UI accordingly. Combine framework's @Published and @StateObject for reactive programming.
+   - ForecastViewModel Structure: Represents a formatted and user-friendly version of the forecast data. Converts temperature units based on the selected system (Celsius or Fahrenheit).Provides computed properties for various weather details.
+   - ContentView SwiftUI View: Displays the main user interface with pickers, text fields, a list of daily forecasts, and alerts for errors. Integrates SDWebImageSwiftUI for loading and displaying weather icons. Implements loading indicators during data fetching.
+   - User Interaction: 
+     1. Temperature Unit Selection: Users can choose between Celsius and Fahrenheit using a segmented picker. 
+     2. Location Input: Users can input their location in the text field, triggering weather data fetching upon pressing the search button or hitting return.
+     3. Error Handling: The app provides alerts for two major errors, invalid locations or network issues. 
+     4. Loading Indicator: A loading indicator is displayed during data fetching to inform users about ongoing operations.
